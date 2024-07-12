@@ -1,0 +1,2 @@
+spring.application.name=Cloud-BOA-API-Gateway
+server.port=8085

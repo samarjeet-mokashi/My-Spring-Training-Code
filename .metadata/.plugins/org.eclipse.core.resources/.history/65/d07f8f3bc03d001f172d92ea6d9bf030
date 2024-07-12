@@ -1,0 +1,92 @@
+package com.boa.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.boa.model.Customer;
+
+@RestController
+@RequestMapping("/customerApi")
+public class CustomerController {
+	
+	
+	private static ArrayList<Customer> custList = new ArrayList<>();
+    // static initializer called when class is loaded
+	static {
+		custList = new ArrayList<>();
+		custList.add(new Customer(1, "Name1", "Address1"));
+		custList.add(new Customer(2, "Name2", "Address2"));
+	}
+
+	public static List<Customer> getCustomers() {
+		return custList;
+	}
+
+
+	
+	
+	// using request mapping method impl
+
+		@RequestMapping(value = "/detailsCustomer", produces = MediaType.APPLICATION_JSON_VALUE,
+				method = RequestMethod.GET)
+		public List<Customer> getAllCustomerDetails() {
+
+			// set some data here hard coded
+			// later look up by the service to JPA
+
+			
+
+			return getCustomers();
+		}
+		
+		
+		
+		@GetMapping("/getCustomerDetails/{id}")
+		public String getCustomerDetails(@PathVariable int id) throws NotFoundException {
+	        Optional <Customer> Customer = custList.stream().filter(b -> b.getCustomerID() == id).findAny();
+			if (!Customer.isPresent())
+				throw new NotFoundException(); // sends 404 to client 
+			
+			return Customer.get().toString();
+		}
+
+		@GetMapping("/updateCustomerDetails/{id}")
+		public void updateCustomerDetails(@PathVariable int id) throws NotFoundException {
+			Optional<Customer> Customer = custList.stream().filter(b -> b.getCustomerID() == id).findAny();
+			if (!Customer.isPresent())
+				throw new NotFoundException();
+
+			Customer.get().setCustomerAddress("NewAddress");
+		}
+
+		@DeleteMapping("/deleteCustomer/{id}")
+		public void deleteCustomer(@PathVariable int id) throws NotFoundException {
+			 for(Customer b : custList) {
+				 if ( b.getCustomerID() == id) {
+					 custList.remove(b);
+					 return;
+				 }
+			 }
+
+			 // if no Customer is found then throw exception 
+	                 throw new NotFoundException();
+		}
+
+		@PostMapping("/addCustomer")
+		public void addCustomer(@RequestBody Customer customer) {
+			custList.add(customer);
+		}
+
+}

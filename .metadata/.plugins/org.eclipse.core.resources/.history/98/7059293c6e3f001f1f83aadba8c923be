@@ -1,0 +1,17 @@
+spring.application.name=BOA-Registration-MicroservicePRODUCER
+server.error.include-stacktrace=never
+server.error.include-message=always
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka
+server.port=8084
+
+#spring.jpa.hibernate.ddl-auto=create
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/crs_boa_schema
+spring.datasource.username=root
+spring.datasource.password=P@ssword
+
+<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.5.0</version>
+		</dependency>

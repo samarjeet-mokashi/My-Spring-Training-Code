@@ -1,0 +1,38 @@
+package com.boa.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.boa.entity.Repository;
+import com.boa.repository.RepositoryRepository;
+
+public class RegistrationService {
+
+	@Autowired
+	private RepositoryRepository RepositoryRepository;
+	
+	public List<Repository> getAllRepositorys() {
+		return RepositoryRepository.findAll();
+	}
+
+	public Repository addRepository( Repository Repository) {
+		return RepositoryRepository.save(Repository);
+	}
+
+	public Repository getRepositoryById( Long id) {
+		return RepositoryRepository.findById(id).orElse(null);
+	}
+
+	public Repository updateRepository( Long id,  Repository updatedRepository) {
+		if (RepositoryRepository.existsById(id)) {
+			updatedRepository.setId(id);
+			return RepositoryRepository.save(updatedRepository);
+		}
+		return null;
+	}
+
+	public void deleteRepository( Long id) {
+		RepositoryRepository.deleteById(id);
+	}
+}

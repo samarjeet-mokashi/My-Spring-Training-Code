@@ -1,0 +1,13 @@
+package com.boa.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BoaSpringRestJpaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BoaSpringRestJpaApplication.class, args);
+	}
+
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="CRS-LT-G4-Spring-REST-JPA">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <property name="context-root" value="CRS-G4-PROJECT-REST-JPA"/>
+        <property name="java-output-path" value="/CRS-LT-G4-Spring-REST-JPA/target/classes"/>
+    </wb-module>
+</project-modules>

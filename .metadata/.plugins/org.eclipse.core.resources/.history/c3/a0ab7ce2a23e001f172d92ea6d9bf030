@@ -1,0 +1,156 @@
+package com.boa.restcontroller;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.boa.entity.Admin;
+import com.boa.entity.Course;
+import com.boa.entity.Professor;
+import com.boa.entity.Registration;
+import com.boa.entity.Student;
+import com.boa.service.AdminService;
+
+@RestController
+@RequestMapping("/admin")
+public class AdminController {
+
+	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
+	
+	@Autowired
+	private AdminService adminService;
+
+	@GetMapping("/getAllAdmins")
+	public List<Admin> getAllAdmins() {
+		return adminService.getAllAdmins();
+	}
+
+	@PostMapping("/addAdmin")
+	public Admin addAdmin(@RequestBody Admin Admin) {
+		return adminService.addAdmin(Admin);
+	}
+
+	@GetMapping("/getAdminById/{id}")
+	public Admin getAdminById(@PathVariable Long id) {
+		return adminService.getAdminById(id);
+	}
+
+	@PutMapping("/updateAdmin/{id}")
+	public Admin updateAdmin(@PathVariable Long id, @RequestBody Admin updatedAdmin) {
+		return adminService.updateAdmin(id, updatedAdmin);
+
+	}
+
+	@DeleteMapping("/deleteAdmin/{id}")
+	public void deleteAdmin(@PathVariable Long id) {
+		adminService.deleteAdmin(id);
+	}
+
+	/*--------Student-----------*/
+
+	@GetMapping("/getAllStudents")
+	public List<Student> getAllStudents() {
+		return adminService.getAllStudents();
+	}
+
+	@PostMapping("/addStudent")
+	public Student addStudent(@RequestBody Student Student) {
+		return adminService.addStudent(Student);
+	}
+
+	@GetMapping("/getStudentById/{id}")
+	public Student getStudentById(@PathVariable Long id) {
+		return adminService.getStudentById(id);
+	}
+
+	@PutMapping("/updateStudent/{id}")
+	public Student updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) {
+		return adminService.updateStudent(id, updatedStudent);
+
+	}
+
+	@DeleteMapping("/deleteStudent/{id}")
+	public void deleteStudent(@PathVariable Long id) {
+		adminService.deleteStudent(id);
+	}
+
+	/*-------Professor-----------*/
+
+	@GetMapping("/getAllProfessors")
+	public List<Professor> getAllProfessors() {
+		return adminService.getAllProfessors();
+	}
+
+	@PostMapping("/addProfessor")
+	public Professor addProfessor(@RequestBody Professor Professor) {
+		return adminService.addProfessor(Professor);
+	}
+
+	@GetMapping("/getProfessorById/{id}")
+	public Professor getProfessorById(@PathVariable Long id) {
+		return adminService.getProfessorById(id);
+	}
+
+	@PutMapping("/updateProfessor/{id}")
+	public Professor updateProfessor(@PathVariable Long id, @RequestBody Professor updatedProfessor) {
+
+		return adminService.updateProfessor(id, updatedProfessor);
+
+	}
+
+	@DeleteMapping("/deleteProfessor/{id}")
+	public void deleteProfessor(@PathVariable Long id) {
+		adminService.deleteProfessor(id);
+	}
+
+	/*-----------Course----------*/
+
+	@GetMapping("/getAllCourses")
+	public List<Course> getAllCourses() {
+		return adminService.getAllCourses();
+	}
+
+	@PostMapping("/addCourse")
+	public Course addCourse(@RequestBody Course Course) {
+		return adminService.addCourse(Course);
+	}
+
+	@GetMapping("/getCourseById/{id}")
+	public Course getCourseById(@PathVariable Long id) {
+		return adminService.getCourseById(id);
+	}
+
+	@PutMapping("/updateCourse/{id}")
+	public Course updateCourse(@PathVariable Long id, @RequestBody Course updatedCourse) {
+
+		return adminService.updateCourse(id, updatedCourse);
+	}
+
+	@DeleteMapping("/deleteCourse/{id}")
+	public void deleteCourse(@PathVariable Long id) {
+		adminService.deleteCourse(id);
+	}
+
+	/*-------Report-----------*/
+
+	@GetMapping("/generateReportById/{id}")
+	public Professor generateReportById(@PathVariable Long id) {
+		return adminService.generateReportById(id);
+	}
+	
+	@GetMapping("/getUnapprovedStudents")
+	public List<Registration> getUnapprovedStudents() {
+		return adminService.getUnapprovedStudents();
+	}
+
+}

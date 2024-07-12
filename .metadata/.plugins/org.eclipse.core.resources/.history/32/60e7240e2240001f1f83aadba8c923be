@@ -1,0 +1,14 @@
+spring.application.name=BOA-Zipkin-Server
+
+#spring.application.name=BOA-Zipkin-Server
+server.port=9411
+eureka.client.region=default
+eureka.client.registryFetchIntervalSeconds=5
+logging.level.org.springframework.web=debug
+
+spring.cloud.config.discovery.service-id=config
+spring.cloud.config.discovery.enabled=true
+spring.cloud.config.username=configUser
+spring.cloud.config.password=configPassword
+
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka

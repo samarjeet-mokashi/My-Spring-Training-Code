@@ -1,0 +1,13 @@
+package com.boa.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BoaAdminMsProducerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BoaAdminMsProducerApplication.class, args);
+	}
+
+}

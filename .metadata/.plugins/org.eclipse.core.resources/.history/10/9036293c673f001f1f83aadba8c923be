@@ -1,0 +1,5 @@
+package com.boa.routerconfig;
+
+public class SpringCloudConfig {
+
+}

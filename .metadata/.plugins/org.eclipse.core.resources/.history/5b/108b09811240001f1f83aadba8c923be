@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="BOA-Admin-MS-CONSUMER">
+        <property name="context-root" value="BOA-Admin-MS-CONSUMER"/>
+        <property name="java-output-path" value="/BOA-Admin-MS-CONSUMER/target/classes"/>
+    </wb-module>
+</project-modules>

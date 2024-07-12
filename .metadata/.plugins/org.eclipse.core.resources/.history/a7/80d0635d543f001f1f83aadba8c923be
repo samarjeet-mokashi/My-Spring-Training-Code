@@ -1,0 +1,41 @@
+package com.boa.restcontroller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.boa.entity.Grade;
+import com.boa.service.GradeService;
+
+@RestController
+@RequestMapping("/professor")
+public class ProfessorController {
+
+	@Autowired
+	GradeService gradeService;
+
+	@PostMapping("/addGrade")
+	public Grade addGrade(@RequestBody Grade Grade) {
+		return gradeService.addGrade(Grade);
+	}
+
+	@GetMapping("/getGradeById/{id}")
+	public Grade getGradeById(@PathVariable Long id) {
+		return gradeService.getGradeById(id);
+	}
+
+	@PutMapping("/updateGrade/{id}")
+	public Grade updateGrade(@PathVariable Long id, @RequestBody Grade updatedGrade) {
+		return gradeService.updateGrade(id, updatedGrade);
+
+	}
+
+}

@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package com.boa.service;
+
+/**
+ * 
+ */
+public interface HelloWorld {
+	
+	public String printDetails(String name) {
+		
+		System.out.println("");
+		
+		return "Hello print my name" + name;
+		
+	}
+
+}

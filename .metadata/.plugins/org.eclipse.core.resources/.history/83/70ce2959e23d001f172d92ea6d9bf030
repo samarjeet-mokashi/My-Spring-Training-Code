@@ -1,0 +1,8 @@
+package com.boa.restcontroller;
+
+public class Snippet {
+	public static void main(String[] args) {
+		BookController
+	}
+}
+

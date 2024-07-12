@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+package com.boa.service;
+
+/**
+ * 
+ */
+public interface HelloWorld {
+
+}

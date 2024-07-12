@@ -1,0 +1,5 @@
+package com.boa.controller;
+
+public class HelloController {
+
+}

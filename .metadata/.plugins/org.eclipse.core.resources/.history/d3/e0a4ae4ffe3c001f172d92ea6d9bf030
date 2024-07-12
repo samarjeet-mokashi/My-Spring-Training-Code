@@ -1,0 +1,37 @@
+package com.boa.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.boa.model.CustomerModel;
+
+public class CustomerServiceImpl implements CustomerService {
+	
+	List<CustomerModel> custArray = new ArrayList<CustomerModel>();
+	CustomerModel customerModel = new CustomerModel();
+
+	@Override
+	public void addCustomer(CustomerModel cust) {
+		custArray.add(cust);
+		
+	}
+
+	@Override
+	public void deleteCustomer(int custId) {
+		custArray.removeIf(new  Predicate);
+		
+	}
+
+	@Override
+	public List<CustomerModel> getAllCustomer() {
+		return custArray;
+		
+	}
+
+	@Override
+	public void getCustomer(int custId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

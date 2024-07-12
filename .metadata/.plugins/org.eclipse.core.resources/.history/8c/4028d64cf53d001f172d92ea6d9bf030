@@ -1,0 +1,163 @@
+package com.boa.restcontroller;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.boa.entity.Admin;
+import com.boa.entity.Course;
+import com.boa.entity.Professor;
+import com.boa.entity.Student;
+import com.boa.repository.adminService;
+import com.boa.repository.adminService;
+import com.boa.repository.adminService;
+import com.boa.repository.adminService;
+import com.boa.service.AdminService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/admin")
+public class AdminController {
+
+	@Autowired
+    private AdminService adminService;
+    
+
+
+	@GetMapping("/getAllAdmins") 
+    public List<Admin> getAllAdmins() {
+        return adminService.getAllAdmins();
+    }
+
+    @PostMapping("/addAdmin")
+    public Admin addAdmin(@RequestBody Admin Admin) {
+        return adminService.save(Admin);
+    }
+
+    @GetMapping("/getAdminById/{id}")
+    public Admin getAdminById(@PathVariable Long id) {
+        return adminService.findById(id).orElse(null);
+    }
+
+    @PutMapping("/updateAdmin/{id}")
+    public Admin updateAdmin(@PathVariable Long id, @RequestBody Admin updatedAdmin) {
+        if (adminService.existsById(id)) {
+            updatedAdmin.setId(id);
+            return adminService.save(updatedAdmin);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/deleteAdmin/{id}")
+    public void deleteAdmin(@PathVariable Long id) {
+    	adminService.deleteById(id);
+    }
+    
+    
+    
+    /*--------Student-----------*/
+    
+    @GetMapping("/getAllStudents")
+    public List<Student> getAllStudents() {
+        return adminService.findAll();
+    }
+
+    @PostMapping("/addStudent")
+    public Student addStudent(@RequestBody Student Student) {
+        return adminService.save(Student);
+    }
+
+    @GetMapping("/getStudentById/{id}")
+    public Student getStudentById(@PathVariable Long id) {
+        return adminService.findById(id).orElse(null);
+    }
+
+    @PutMapping("/updateStudent/{id}")
+    public Student updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) {
+        if (adminService.existsById(id)) {
+            updatedStudent.setId(id);
+            return adminService.save(updatedStudent);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/deleteStudent/{id}")
+    public void deleteStudent(@PathVariable Long id) {
+    	adminService.deleteById(id);
+    }
+    
+    
+    /*-------Professor-----------*/
+    
+    
+    @GetMapping("/getAllProfessors") 
+    public List<Professor> getAllProfessors() {
+        return adminService.findAll();
+    }
+
+    @PostMapping("/addProfessor")
+    public Professor addProfessor(@RequestBody Professor Professor) {
+        return adminService.save(Professor);
+    }
+
+    @GetMapping("/getProfessorById/{id}")
+    public Professor getProfessorById(@PathVariable Long id) {
+        return adminService.findById(id).orElse(null);
+    }
+
+    @PutMapping("/updateProfessor/{id}")
+    public Professor updateProfessor(@PathVariable Long id, @RequestBody Professor updatedProfessor) {
+        if (adminService.existsById(id)) {
+            updatedProfessor.setId(id);
+            return adminService.save(updatedProfessor);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/deleteProfessor/{id}")
+    public void deleteProfessor(@PathVariable Long id) {
+    	adminService.deleteById(id);
+    }
+    
+    /*-----------Course----------*/
+    
+    @GetMapping("/getAllCourses")
+    public List<Course> getAllCourses() {
+        return adminService.findAll();
+    }
+
+    @PostMapping("/addCourse")
+    public Course addCourse(@RequestBody Course Course) {
+        return adminService.save(Course);
+    }
+
+    @GetMapping("/getCourseById/{id}")
+    public Course getCourseById(@PathVariable Long id) {
+        return adminService.findById(id).orElse(null);
+    }
+
+    @PutMapping("/updateCourse/{id}")
+    public Course updateCourse(@PathVariable Long id, @RequestBody Course updatedCourse) {
+        if (adminService.existsById(id)) {
+            updatedCourse.setCourseId(id);
+            return adminService.save(updatedCourse);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/deleteCourse/{id}")
+    public void deleteCourse(@PathVariable Long id) {
+        adminService.deleteById(id);
+    }
+    
+    
+    /*-------Report-----------*/
+    
+    @GetMapping("/generateReportById/{id}")
+    public Professor generateReportById(@PathVariable Long id) {
+        return adminService.generateReportById(id);
+    }
+    
+}
+

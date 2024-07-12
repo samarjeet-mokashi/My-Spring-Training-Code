@@ -1,0 +1,15 @@
+package com.boa.service;
+
+import com.boa.model.CustomerModel;
+
+public interface CustomerService {
+	
+	public void addCustomer(CustomerModel cust);
+	
+	public void deleteCustomer(int custId);
+	
+	public void getAllCustomer();
+	
+	public void getCustomer(int custId);
+
+}

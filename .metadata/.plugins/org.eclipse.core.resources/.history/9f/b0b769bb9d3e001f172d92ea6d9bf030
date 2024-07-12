@@ -1,0 +1,50 @@
+package com.boa.restcontroller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.boa.entity.Admin;
+import com.boa.service.AdminService;
+
+@RestController
+@RequestMapping("/registration")
+public class RegistrationController {
+
+	@Autowired
+	private AdminService adminService;
+
+	@GetMapping("/getAllAdmins")
+	public List<Admin> getAllAdmins() {
+		return adminService.getAllAdmins();
+	}
+
+	@PostMapping("/addAdmin")
+	public Admin addAdmin(@RequestBody Admin Admin) {
+		return adminService.addAdmin(Admin);
+	}
+
+	@GetMapping("/getAdminById/{id}")
+	public Admin getAdminById(@PathVariable Long id) {
+		return adminService.getAdminById(id);
+	}
+
+	@PutMapping("/updateAdmin/{id}")
+	public Admin updateAdmin(@PathVariable Long id, @RequestBody Admin updatedAdmin) {
+		return adminService.updateAdmin(id, updatedAdmin);
+
+	}
+
+	@DeleteMapping("/deleteAdmin/{id}")
+	public void deleteAdmin(@PathVariable Long id) {
+		adminService.deleteAdmin(id);
+	}
+}
